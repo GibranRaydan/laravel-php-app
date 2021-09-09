@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,6 @@ Route::get('/', function () {
 });
 
 Route::resource('brands', BrandController::class);
+Route::resource('products', ProductController::class);
+
 

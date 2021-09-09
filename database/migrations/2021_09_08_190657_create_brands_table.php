@@ -20,6 +20,17 @@ class CreateBrandsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
+
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('size');
+            $table->text('comments');
+            $table->bigInteger('quantity');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
+            $table->foreignId('brand_id')->constrained();
+           });
     }
 
     /**
@@ -29,6 +40,7 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('products');
         Schema::dropIfExists('brands');
     }
 }

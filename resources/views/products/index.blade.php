@@ -4,14 +4,15 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Brands </h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}" title="Products list"> <i
-                        class="fas fa-archive"></i>
-                </a>
+                <h2>Products </h2>
             </div>
 
+
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('brands.index') }}" title="Brands list"> <i
+                        class="fa fa-signal"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -21,9 +22,8 @@
         </div>
     @endif
 
-
     <div class="pull-right">
-        <a class="btn btn-success" href="{{ route('brands.create') }}" title="Create a new Brand"> <i
+        <a class="btn btn-success" href="{{ route('products.create') }}" title="Create a new product"> <i
                 class="fas fa-plus-circle"></i>
         </a>
     </div>
@@ -32,21 +32,28 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Reference</th>
+            <th>size</th>
+            <th>quantity in Stock</th>
+            <th>comments</th>
+            <th>brand</th>
+
         </tr>
-        @foreach ($brands as $brand)
+        @foreach ($products as $product)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $brand->name }}</td>
-                <td>{{ $brand->reference }}</td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->size }}</td>
+                <td>{{ $product->quantity }}</td>
+                <td>{{ $product->comments }}</td>
+                <td>{{ $product->brand_id }}</td>
                 <td>
-                    <form action="{{ route('brands.destroy', $brand->id) }}" method="POST">
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
 
-                        <a href="{{ route('brands.show', $brand->id) }}" title="show">
+                        <a href="{{ route('products.show', $product->id) }}" title="show">
                             <i class="fas fa-eye text-success  fa-lg"></i>
                         </a>
 
-                        <a href="{{ route('brands.edit', $brand->id) }}">
+                        <a href="{{ route('products.edit', $product->id) }}">
                             <i class="fas fa-edit  fa-lg"></i>
 
                         </a>
@@ -64,6 +71,6 @@
         @endforeach
     </table>
 
-    {!! $brands->links() !!}
+    {!! $products->links() !!}
 
 @endsection

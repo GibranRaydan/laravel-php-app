@@ -7,7 +7,8 @@
                 <h2>Edit Brand</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('brands.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('brands.index') }}" title="Go back"> <i
+                        class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -31,16 +32,18 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $brand->name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{ $brand->name }}" class="form-control" placeholder="Name"
+                        required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="reference" value="{{ $brand->reference }}" class="form-control" placeholder="reference">
+                    <input type="text" name="reference" value="{{ $brand->reference }}" class="form-control"
+                        placeholder="reference" required>
                 </div>
             </div>
-         
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

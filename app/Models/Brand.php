@@ -12,6 +12,11 @@ class Brand extends Model
     protected $table = 'brands';
     public $timestamps = true;
 
+    public function products()
+    {
+        return $this->hasMany('App\Models\Products');
+    }
+
     protected $fillable = [
         'name',
         'reference'

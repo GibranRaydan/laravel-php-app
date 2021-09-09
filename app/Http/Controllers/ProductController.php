@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::latest()->paginate(5);
+        $products = Product::latest()->paginate(5);
 
-        return view('brands.index', compact('brands'))
+        return view('products.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +27,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brands.create');
+        return view('products.create');
     }
 
     /**
@@ -40,19 +40,16 @@ class BrandController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'reference' => 'required'
+            'size' => 'required',
+            'quantity' => 'required',
+            'comments' => 'required',
+            'brand_id'=> 'required'
         ]);
 
-        if (Brand::where('reference', $request['reference'])->exists()) {
-            return response()->json([
-                'message' => 'reference already exist.'
-            ], 404);
-        };
+        Product::create($request->all());
 
-        Brand::create($request->all());
-
-        return redirect()->route('brands.index')
-            ->with('success', 'Brand created successfully.');
+        return redirect()->route('products.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
@@ -61,9 +58,9 @@ class BrandController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Product $product)
     {
-        return view('brands.show', compact('brand'));
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -72,9 +69,9 @@ class BrandController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Product $product)
     {
-        return view('brands.edit', compact('brand'));
+        return view('products.edit', compact('product'));
     }
     /**
      * Update the specified resource in storage.
@@ -83,18 +80,21 @@ class BrandController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, Product $product)
     {
         $request->validate([
             'name' => 'required',
-            'reference' => 'required'
+            'size' => 'required',
+            'quantity' => 'required',
+            'comments' => 'required',
+            'brand_id'=> 'required'
         ]);
 
 
-        $brand->update($request->all());
+        $product->update($request->all());
 
-        return redirect()->route('brands.index')
-            ->with('success', 'Brand updated successfully');
+        return redirect()->route('products.index')
+            ->with('success', 'Product updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -102,11 +102,11 @@ class BrandController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(Product $product)
     {
-        $brand->delete();
+        $product->delete();
 
-        return redirect()->route('brands.index')
-            ->with('success', 'Brand deleted successfully');
+        return redirect()->route('products.index')
+            ->with('success', 'Product deleted successfully');
     }
 }

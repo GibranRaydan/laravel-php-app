@@ -4,10 +4,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Product</h2>
+                <h2>Add New Brand</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('brands.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('brands.index') }}" title="Go back"> <i
+                        class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -22,23 +23,25 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('brands.store') }}" method="POST" >
+    <form action="{{ route('brands.store') }}" method="POST">
         @csrf
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <input type="text" name="name" class="form-control" placeholder="Name" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>reference:</strong>
-                    <textarea class="form-control" style="height:50px" name="reference"
-                        placeholder="reference"></textarea>
+                    <textarea class="form-control" style="height:50px" name="reference" placeholder="reference"
+                        required></textarea>
                 </div>
-        </div>
-        <button> submit</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
     </form>
 @endsection
