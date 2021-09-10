@@ -13,10 +13,11 @@ Es un sistema gestor de marcas y productos.
 Posee unicamente dos modelos Brands = Marcas y Products = productos
 
 ## Requerimientos previos
-PHP 7.0 en adelante instalado
-Composer instalado
-Mysql instalado
-Laravel instalado
+PHP 7.0 en adelante
+Composer
+Mysql
+Laravel 8 
+instalado
 
 ## Ejecutar el proyecto
 Una vez hecho el pull del proyecto https://github.com/GibranRaydan/laravel-php-app
@@ -25,23 +26,30 @@ Necesitamos crear una base de datos en Mysql.
 
 En el archivo .env encontraremos el bloque de conexión a la base de datos, necesitamos cambiarlo segun la base de datos previamente realizada
 
-
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE= [NOMBRE DE LA BASE DE DATOS]
 DB_USERNAME= [USUARIO DE LA BASE DE DATOS]
 DB_PASSWORD= [CONTRASEÑA DE LA BASE DE DATOS]
+```
 
 
 Procedemos a correr la migración con el comando:
+```
  - php artisan migrate 
+```
 
 Para poblar la Base de datos usaremos el siguiente comando
+```
  - php artisan db:seed
+```
 
 Ya la applicación está lista, para correr el tu local deberas usar el comando
+```
  - php artisan serve 
+```
 
 Rutas: 
 
@@ -53,6 +61,9 @@ Ruta para los servicios de Marca
 
 Ruta para los servicios de Productos
  http://127.0.0.1:8000/products
+
+
+Muchas gracias por descargar el app
 
 
 ## About Laravel
