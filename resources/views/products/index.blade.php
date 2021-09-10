@@ -45,7 +45,7 @@
                 <td>{{ $product->size }}</td>
                 <td>{{ $product->quantity }}</td>
                 <td>{{ $product->comments }}</td>
-                <td>{{ $product->brand_id }}</td>
+                <td>{{ $product->brand->name}}</td>
                 <td>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
 
@@ -71,6 +71,6 @@
         @endforeach
     </table>
 
-    {!! $products->links() !!}
+    {!! $products->links('pagination::bootstrap-4') !!}
 
 @endsection

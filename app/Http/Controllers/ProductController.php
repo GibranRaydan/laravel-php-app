@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,10 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::latest()->paginate(7);
 
         return view('products.index', compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 7);
     }
 
     /**
@@ -71,7 +72,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $brands = Brand::all();
+        return view('products.edit', compact('product', 'brands'));
     }
     /**
      * Update the specified resource in storage.
@@ -90,8 +92,9 @@ class ProductController extends Controller
             'brand_id'=> 'required'
         ]);
 
-
+        
         $product->update($request->all());
+        $product->touch();
 
         return redirect()->route('products.index')
             ->with('success', 'Product updated successfully');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -14,10 +15,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::latest()->paginate(5);
+        $brands = Brand::latest()->paginate(7);
 
         return view('brands.index', compact('brands'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 7);
     }
 
     /**
@@ -92,6 +93,7 @@ class BrandController extends Controller
 
 
         $brand->update($request->all());
+        $brand->touch();
 
         return redirect()->route('brands.index')
             ->with('success', 'Brand updated successfully');
@@ -104,7 +106,11 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        $brand->delete();
+        if (Product::where('brand_id', $brand['id'])->exists()) {
+            return response()->json([
+                'message' => 'cannot delete brand with products.'
+            ], 404);
+        };        $brand->delete();
 
         return redirect()->route('brands.index')
             ->with('success', 'Brand deleted successfully');

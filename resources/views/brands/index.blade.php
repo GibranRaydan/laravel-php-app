@@ -8,10 +8,10 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('products.index') }}" title="Products list"> <i
-                        class="fas fa-archive"></i>
+                        class="fa fa-folder-open"></i>
                 </a>
             </div>
-
+            
         </div>
     </div>
 
@@ -21,9 +21,9 @@
         </div>
     @endif
 
-
+           
     <div class="pull-right">
-        <a class="btn btn-success" href="{{ route('brands.create') }}" title="Create a new Brand"> <i
+        <a class="btn btn-success" href="{{ route('brands.create') }}" title="Create a new brand"> <i
                 class="fas fa-plus-circle"></i>
         </a>
     </div>
@@ -64,6 +64,6 @@
         @endforeach
     </table>
 
-    {!! $brands->links() !!}
+    {!! $brands->links('pagination::bootstrap-4') !!}
 
 @endsection

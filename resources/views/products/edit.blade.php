@@ -41,9 +41,9 @@
                 <div class="form-group">
                     <strong>Size:</strong>
                     <select name="size" class="form-group">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
+                        <option value="S" {{$product->size  == "S" ?'selected' : ''}}>S</option>
+                        <option value="M" {{$product->size  == "M" ?'selected' : ''}}>M</option>
+                        <option value="L" {{$product->size  == "L" ?'selected' : ''}}>L</option>
                     </select>
                 </div>
             </div>
@@ -64,9 +64,16 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Brand:</strong>
-                    <input type="text" name="brand_id" value="{{ $product->brand_id }}" class="form-control"
-                        placeholder="brand_id" required>
+
+                    <strong>Size:</strong>
+                    <select name="brand_id" class="form-group">
+                        
+                        @foreach ($brands->all() as $brand)
+                            <option value="{{ $brand->id }}" {{$brand->id  == $product->brand_id ? 'selected' : ''}}>{{ $brand->name }}</option>
+                            
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
