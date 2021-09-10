@@ -7,6 +7,54 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Acerca del Proyecto
+Esta applicación web es un ejemplo sencillo hecho con Laravel (PHP) y una Base de datos Mysql.
+Es un sistema gestor de marcas y productos.
+Posee unicamente dos modelos Brands = Marcas y Products = productos
+
+## Requerimientos previos
+PHP 7.0 en adelante instalado
+Composer instalado
+Mysql instalado
+Laravel instalado
+
+## Ejecutar el proyecto
+Una vez hecho el pull del proyecto https://github.com/GibranRaydan/laravel-php-app
+Procedemos a copiar el archivo .env/example y lo renombramos .env (Al mismo nivel de archivos).
+Necesitamos crear una base de datos en Mysql.
+
+En el archivo .env encontraremos el bloque de conexión a la base de datos, necesitamos cambiarlo segun la base de datos previamente realizada
+
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE= [NOMBRE DE LA BASE DE DATOS]
+DB_USERNAME= [USUARIO DE LA BASE DE DATOS]
+DB_PASSWORD= [CONTRASEÑA DE LA BASE DE DATOS]
+
+
+Procedemos a correr la migración con el comando:
+ - php artisan migrate 
+
+Para poblar la Base de datos usaremos el siguiente comando
+ - php artisan db:seed
+
+Ya la applicación está lista, para correr el tu local deberas usar el comando
+ - php artisan serve 
+
+Rutas: 
+
+Ruta por defecto de la app, Medu de laravel
+ http://127.0.0.1:8000
+
+Ruta para los servicios de Marca
+ http://127.0.0.1:8000/brands
+
+Ruta para los servicios de Productos
+ http://127.0.0.1:8000/products
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
