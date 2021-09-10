@@ -24,7 +24,7 @@ Una vez hecho el pull del proyecto https://github.com/GibranRaydan/laravel-php-a
 Procedemos a copiar el archivo .env/example y lo renombramos .env (Al mismo nivel de archivos).
 Necesitamos crear una base de datos en Mysql.
 
-En el archivo .env encontraremos el bloque de conexión a la base de datos, necesitamos cambiarlo segun la base de datos previamente realizada
+En el archivo .env encontraremos el bloque de conexión a la base de datos, necesitamos cambiarlo según la base de datos previamente realizada
 
 ```
 DB_CONNECTION=mysql
